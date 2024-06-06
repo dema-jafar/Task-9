@@ -1,9 +1,6 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
 import "./Hero.css"
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
-import {Container} from "react-bootstrap"
 
 export default function Hero() {
     const [count, setCount] = useState(0);
@@ -45,24 +42,24 @@ export default function Hero() {
 
     useEffect(() =>{
         if (count == 0) {
-            setColor('black');
+            setColor('#3ebbbb');
             IsVisible(false);
 
         }
         if (count == 10) {
-            setColor('blue');
+            setColor('#a66fda');
             setPopUp(true);
-            setMessage("Count reach 10");
+            setMessage("Count reached 10");
         }
         if (count == 100) {
-            setColor('red');
+            setColor('#cc8383');
             setPopUp(true);
-            setMessage("Count reach 100");
+            setMessage("Count reached 100");
         }
         if (count == 1000) {
-            setColor('green');
+            setColor('#7272d3');
             setPopUp(true);
-            setMessage("Count reach 1000");
+            setMessage("Count reached 1000");
             IsVisible(true);
         }
     })
@@ -70,16 +67,16 @@ export default function Hero() {
 
 
     return (
-        <Container className='hero' style={{backgroundColor: color}}>
+        <section className='hero' style={{backgroundColor: color}}>
             <div className="heroContent">
-                <Button variant="danger" onClick={IncreaseTheCounter}>Increase Counter</Button>
-                <Button variant="danger" className={visible ? "ms-3" : "hide"} onClick={DecreaseTheCounter}>Decrease Counter</Button>
-                <div className='text-center mt-3 text-light'><span>{count}</span></div>
+                <button onClick={IncreaseTheCounter}>Increase Counter</button>
+                <button className={visible ? "" : "hide"} onClick={DecreaseTheCounter}>Decrease Counter</button>
+                <div className='count'><span>{count}</span></div>
                 <div className={popUp ? "showMessage" : "message"}>
                     <p>{message}</p>
                     <span className='close' onClick={() =>{setPopUp(false)}}>x</span>
                 </div>
             </div>
-        </Container>
+        </section>
     )
 }
